@@ -17,7 +17,7 @@ function typeEffect() {
 
   if (isDeleting) {
     typingElement.textContent = currentWord.substring(0, charIndex--);
-    if (charIndex < 0) {
+    if (charIndex === 0) {
       isDeleting = false;
       wordIndex = (wordIndex + 1) % words.length;
       setTimeout(typeEffect, 300);
@@ -62,7 +62,7 @@ window.addEventListener("scroll", () => {
   sections.forEach(section => {
     const sectionTop = section.offsetTop - 100;
     const sectionHeight = section.clientHeight;
-    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
       current = section.getAttribute("id");
     }
   });
