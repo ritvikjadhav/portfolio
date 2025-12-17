@@ -56,6 +56,7 @@ header {
   font-size: 2.8rem;
   font-weight: 700;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: 0.3s ease;
@@ -118,11 +119,11 @@ nav a.active::after {
 
 .moon-wrapper {
   position: absolute;
-  top: 50%;                 /* center vertically */
-  left: -220px;             /* push slightly outside the content area */
+  top: 50%;
+  left: -220px;
   transform: translateY(-50%);
-  width: 300px;             /* increased size */
-  height: 300px;            /* increased size */
+  width: 300px;   /* adjusted size */
+  height: 300px;  /* adjusted size */
   z-index: 0;
   pointer-events: none;
 }
@@ -142,8 +143,6 @@ nav a.active::after {
   to   { transform: rotate(360deg); }
 }
 
-
-
 /* Profile Image Container */
 .home-img {
   position: relative;
@@ -152,12 +151,18 @@ nav a.active::after {
 
 .home-content h1 span {
   background: linear-gradient(90deg, var(--primary), var(--secondary));
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
   letter-spacing: 0.05em;
+  transition: filter 0.3s ease;
 }
+
+.home-content h1 span:hover {
+  filter: brightness(1.1);
+}
+
 .home-content h3 {
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -291,8 +296,3 @@ section.show {
   background: var(--secondary);
   color: var(--text-color);
 }
-
-
-
-
-
