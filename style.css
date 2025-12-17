@@ -151,11 +151,13 @@ nav a.active::after {
 }
 
 .home-content h1 span {
-  background: linear-gradient(90deg, #0f0f1a, #1e3a8a, #3a86ff, #f8f9fa);
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
-
 .home-content h3 {
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -289,6 +291,7 @@ section.show {
   background: var(--secondary);
   color: var(--text-color);
 }
+
 
 
 
