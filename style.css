@@ -121,8 +121,8 @@ nav a.active::after {
   top: 50%;                 /* center vertically */
   left: -220px;             /* push slightly outside the content area */
   transform: translateY(-50%);
-  width: 550px;             /* increased size */
-  height: 550px;            /* increased size */
+  width: 500px;             /* increased size */
+  height: 500px;            /* increased size */
   z-index: 0;
   pointer-events: none;
 }
@@ -289,4 +289,5 @@ section.show {
   background: var(--secondary);
   color: var(--text-color);
 }
+
 
