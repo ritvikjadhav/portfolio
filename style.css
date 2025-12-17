@@ -56,15 +56,12 @@ header {
   font-size: 2.8rem;
   font-weight: 700;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: 0.3s ease;
 }
 
-.logo:hover {
-  transform: scale(1.1);
-}
+.logo:hover { transform: scale(1.1); }
 
 nav a {
   font-size: 1.6rem;
@@ -75,9 +72,7 @@ nav a {
   transition: color 0.3s ease;
 }
 
-nav a:hover {
-  color: var(--accent);
-}
+nav a:hover { color: var(--accent); }
 
 nav a::after {
   content: "";
@@ -91,9 +86,7 @@ nav a::after {
 }
 
 nav a:hover::after,
-nav a.active::after {
-  width: 100%;
-}
+nav a.active::after { width: 100%; }
 
 /* Hero Section */
 .home {
@@ -122,8 +115,8 @@ nav a.active::after {
   top: 50%;
   left: -220px;
   transform: translateY(-50%);
-  width: 470px;   /* adjusted size */
-  height: 470px;  /* adjusted size */
+  width: 470px;
+  height: 470px;
   z-index: 0;
   pointer-events: none;
 }
@@ -143,24 +136,15 @@ nav a.active::after {
   to   { transform: rotate(360deg); }
 }
 
-/* Profile Image Container */
-.home-img {
-  position: relative;
-  z-index: 2;
-}
+.home-img { position: relative; z-index: 2; }
 
 .home-content h1 span {
   background: linear-gradient(90deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
   letter-spacing: 0.05em;
-  transition: filter 0.3s ease;
-}
-
-.home-content h1 span:hover {
-  filter: brightness(1.1);
 }
 
 .home-content h3 {
@@ -275,11 +259,9 @@ section.show {
   transition: color 0.3s ease;
 }
 
-.project a:hover {
-  color: var(--secondary);
-}
+.project a:hover { color: var(--secondary); }
 
-/* Skill Badges inside Projects */
+/* Skill Badges */
 .skill-badge {
   display: inline-block;
   background: var(--accent);
@@ -297,3 +279,140 @@ section.show {
   color: var(--text-color);
 }
 
+/* ===================== Responsive ===================== */
+/* ===================== Responsive ===================== */
+@media (max-width: 1024px) {
+  .home-content h1 {
+    font-size: 4.5rem;
+  }
+
+  .home-content h3 {
+    font-size: 2.5rem;
+  }
+
+  /* Moon scales for tablets */
+  .moon-wrapper {
+    width: 280px;
+    height: 280px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .home-img img {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navigation */
+  #nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-color);
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    padding: 1rem 0;
+  }
+
+  #nav.active {
+    display: flex;
+  }
+
+  #nav a {
+    margin: 1.5rem 0;
+    font-size: 1.8rem;
+  }
+
+  #menu-icon {
+    display: block;
+    font-size: 2.4rem;
+    cursor: pointer;
+    color: var(--accent);
+  }
+
+  /* Hero Section */
+  .home {
+    flex-direction: column;
+    gap: 3rem;
+    text-align: center;
+    padding: 6rem 2rem;
+    position: relative;
+  }
+
+  .home-img {
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+  }
+
+  .moon-wrapper {
+    position: absolute;
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .moon {
+    width: 100%;
+    height: 100%;
+    background: url("moon.png") no-repeat center center;
+    background-size: cover;
+    opacity: 0.47;
+    animation: rotateMoon 120s linear infinite;
+  }
+
+  .home-img img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--accent);
+  }
+
+  .home-content h1 {
+    font-size: 3.2rem;
+  }
+
+  .home-content h3 {
+    font-size: 2rem;
+  }
+
+  /* Sections */
+  section {
+    padding: 5rem 2rem;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  /* Projects */
+  .project {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+  }
+
+  .project h3 {
+    font-size: 1.8rem;
+  }
+
+  .project p {
+    font-size: 1.4rem;
+  }
+}
