@@ -104,19 +104,14 @@ function initActiveNavHighlight() {
 }
 initActiveNavHighlight();
 
-function initForceDesktopMode() {
+initForceDesktopMode();
+document.addEventListener("DOMContentLoaded", () => {
   const ua = navigator.userAgent.toLowerCase();
   const isMobile = /android|iphone|ipad|ipod/.test(ua);
   const isDesktopUA = !/mobile/.test(ua);
 
   if (isMobile && isDesktopUA) {
+    console.log("Force desktop mode applied");
     document.body.classList.add("force-desktop");
   }
-}
-initForceDesktopMode();
-
-
-
-
-
-
+});
