@@ -104,14 +104,20 @@ function initActiveNavHighlight() {
 }
 initActiveNavHighlight();
 
-initForceDesktopMode();
 document.addEventListener("DOMContentLoaded", () => {
   const ua = navigator.userAgent.toLowerCase();
-  const isMobile = /android|iphone|ipad|ipod/.test(ua);
-  const isDesktopUA = !/mobile/.test(ua);
+  const isMobileDevice = /android|iphone|ipad|ipod/.test(ua);
 
-  if (isMobile && isDesktopUA) {
-    console.log("Force desktop mode applied");
+  // If it's NOT a mobile device, always force desktop layout
+  if (!isMobileDevice) {
     document.body.classList.add("force-desktop");
+    console.log("Desktop browser detected, forcing desktop layout");
+  }
+
+  // If it's a mobile device but UA says desktop (Chrome 'Desktop site')
+  const isDesktopUA = !/mobile/.test(ua);
+  if (isMobileDevice && isDesktopUA) {
+    document.body.classList.add("force-desktop");
+    console.log("Mobile with desktop UA, forcing desktop layout");
   }
 });
