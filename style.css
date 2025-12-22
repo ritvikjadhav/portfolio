@@ -371,3 +371,34 @@ p {
     transform: scale(0.6) translate(-50%, -50%);
   }
 }
+body.force-desktop .moon-wrapper {
+  opacity: 0.55 !important;
+  visibility: visible !important;
+  transform: scale(1) translateY(-50%) !important;
+}
+
+body.force-desktop #nav {
+  display: flex !important;
+  flex-direction: row !important;
+  position: static !important;
+  width: auto !important;
+  background: none !important;
+}
+
+body.force-desktop #menu-icon {
+  display: none !important;
+}
+
+body.force-desktop .home {
+  flex-direction: row !important;
+  gap: 6rem !important;
+  text-align: left !important;
+  padding: 12rem 9% 5rem !important;
+}
+
+body.force-desktop .home-img img {
+  width: 240px !important;
+  height: 240px !important;
+}
+
+
