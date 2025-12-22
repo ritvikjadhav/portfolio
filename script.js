@@ -104,6 +104,19 @@ function initActiveNavHighlight() {
 }
 initActiveNavHighlight();
 
+function initForceDesktopMode() {
+  const ua = navigator.userAgent.toLowerCase();
+  const isMobile = /android|iphone|ipad|ipod/.test(ua);
+  const isDesktopUA = !/mobile/.test(ua);
+
+  if (isMobile && isDesktopUA) {
+    document.body.classList.add("force-desktop");
+  }
+}
+initForceDesktopMode();
+
+
+
 
 
 
