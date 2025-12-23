@@ -22,7 +22,7 @@
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* adjust to your header height */
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -272,11 +272,7 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
   .home-content h3 { font-size: 2rem; }
   .home-img img { width: 120px; height: 120px; }
 
-  .moon-wrapper {
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.6) translate(-50%, -50%);
-  }
+  .moon-wrapper { display: none; }
 
   #nav {
     display: none;
@@ -295,6 +291,7 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
     display: block;
     font-size: 2rem;
     color: var(--accent);
+    cursor: pointer;
   }
 }
 
@@ -311,11 +308,7 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
   .home-content h3 { font-size: 2.2rem; }
   .home-img img { width: 160px; height: 160px; }
 
-  .moon-wrapper {
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.7) translate(-50%, -50%);
-  }
+  .moon-wrapper { display: none; }
 
   #nav {
     display: none;
@@ -334,6 +327,7 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
     display: block;
     font-size: 2.2rem;
     color: var(--accent);
+    cursor: pointer;
   }
 }
 
@@ -350,11 +344,7 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
   .home-content h3 { font-size: 2.5rem; }
   .home-img img { width: 200px; height: 200px; }
 
-  .moon-wrapper {
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.8) translate(-50%, -50%);
-  }
+  .moon-wrapper { display: none; }
 
   #nav {
     display: none;
@@ -373,36 +363,23 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
     display: block;
     font-size: 2.4rem;
     color: var(--accent);
+    cursor: pointer;
   }
 }
 
-/* Force desktop layout overrides */
-body.force-desktop .home {
-  flex-direction: row !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 6rem !important;
-  text-align: left !important;
-  padding: 12rem 9% 5rem !important;
-}
-body.force-desktop .home-content h1 { font-size: 5.5rem !important; }
-body.force-desktop .home-content h3 { font-size: 3rem !important; }
-body.force-desktop .home-img img {
-  width: 240px !important;
-  height: 240px !important;
-}
-body.force-desktop .moon-wrapper {
-  opacity: 0.55 !important;
-  visibility: visible !important;
-  transform: scale(1) translateY(-50%) !important;
-}
-body.force-desktop #nav {
-  display: flex !important;
-  flex-direction: row !important;
-  position: static !important;
-  width: auto !important;
-  background: none !important;
-}
-body.force-desktop #menu-icon {
-  display: none !important;
+/* Desktop (default) */
+@media (min-width: 991px) {
+  #menu-icon { display: none; }
+  #nav {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    width: auto;
+    background: none;
+  }
+  .moon-wrapper {
+    opacity: 0.55;
+    visibility: visible;
+    transform: scale(1) translateY(-50%);
+  }
 }
