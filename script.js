@@ -44,9 +44,11 @@ const menuIcon = document.getElementById("menu-icon");
 const nav = document.getElementById("nav");
 
 function initMenuToggle() {
-  menuIcon.addEventListener("click", () => {
-    nav.classList.toggle("active");
-  });
+  if (menuIcon && nav) {
+    menuIcon.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  }
 }
 initMenuToggle();
 
@@ -104,20 +106,20 @@ function initActiveNavHighlight() {
 }
 initActiveNavHighlight();
 
+
+// ===============================
+// Device Detection (Fixed)
+// ===============================
 document.addEventListener("DOMContentLoaded", () => {
   const ua = navigator.userAgent.toLowerCase();
   const isMobileDevice = /android|iphone|ipad|ipod/.test(ua);
 
-  // If it's NOT a mobile device, always force desktop layout
-  if (!isMobileDevice) {
-    document.body.classList.add("force-desktop");
-    console.log("Desktop browser detected, forcing desktop layout");
-  }
+  // ❌ Removed force-desktop logic
+  // ✅ Let CSS media queries handle layout naturally
 
-  // If it's a mobile device but UA says desktop (Chrome 'Desktop site')
-  const isDesktopUA = !/mobile/.test(ua);
-  if (isMobileDevice && isDesktopUA) {
-    document.body.classList.add("force-desktop");
-    console.log("Mobile with desktop UA, forcing desktop layout");
+  if (isMobileDevice) {
+    console.log("Mobile device detected, using mobile layout");
+  } else {
+    console.log("Desktop browser detected, using desktop layout");
   }
 });
