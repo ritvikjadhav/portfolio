@@ -366,7 +366,7 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
   }
 }
 /* Desktop (default) */
-@media (min-width: 991px) {
+@media (min-width: 980px) {
   #menu-icon { display: none; }
   #nav {
     display: flex;
@@ -406,3 +406,4 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
   visibility: visible !important;
   transform: scale(1) translateY(-50%) !important;
 }
+
