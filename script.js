@@ -36,16 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// ===============================
-// Mobile Menu Toggle
-// ===============================
-const menuIcon = document.getElementById("menu-icon");
-const nav = document.getElementById("nav");
-
 function initMenuToggle() {
+  const menuIcon = document.getElementById("menu-icon");
+  const nav = document.getElementById("nav");
+
   if (menuIcon && nav) {
     menuIcon.addEventListener("click", () => {
-      nav.classList.toggle("active");
+      const isActive = nav.classList.toggle("active");
+      menuIcon.setAttribute("aria-expanded", isActive);
     });
   }
 }
@@ -73,13 +71,10 @@ function initScrollReveal() {
 }
 initScrollReveal();
 
-
-// ===============================
-// Active Nav Highlight
-// ===============================
-const navLinks = document.querySelectorAll("nav a");
-
 function initActiveNavHighlight() {
+  const navLinks = document.querySelectorAll("nav a");
+  const sections = document.querySelectorAll("section");
+
   window.addEventListener("scroll", () => {
     let current = "";
 
@@ -97,23 +92,20 @@ function initActiveNavHighlight() {
 
     navLinks.forEach(link => {
       link.classList.remove("active");
+      link.removeAttribute("aria-current");
       if (link.getAttribute("href") === "#" + current) {
         link.classList.add("active");
+        link.setAttribute("aria-current", "page");
       }
     });
   });
 }
 initActiveNavHighlight();
 
-
-// ===============================
-// Device Detection (Desktop Mode Fix)
-// ===============================
 document.addEventListener("DOMContentLoaded", () => {
   const html = document.documentElement;
 
   function checkDesktopMode() {
-    // Chrome "Desktop site" usually reports width >= 980px
     if (window.innerWidth >= 980) {
       html.classList.add("desktop");
       html.classList.remove("mobile");
@@ -125,8 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Run on load and whenever viewport changes
   checkDesktopMode();
   window.addEventListener("resize", checkDesktopMode);
+  window.addEventListener("orientationchange", checkDesktopMode);
 });
+
 
