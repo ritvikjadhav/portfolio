@@ -259,114 +259,6 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
 /* Hide hamburger by default (desktop) */
 #menu-icon { display: none; }
 
-/* Phones ≤420px */
-@media (max-width: 420px) {
-  .home {
-    flex-direction: column;
-    gap: 2rem;
-    text-align: center;
-    padding: 5rem 1.5rem;
-  }
-
-  .home-content h1 { font-size: 3.2rem; }
-  .home-content h3 { font-size: 2rem; }
-  .home-img img { width: 120px; height: 120px; }
-
-  .moon-wrapper { display: none; }
-
-  #nav {
-    display: none;
-    flex-direction: column;
-    background: var(--bg-color);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 1rem 0;
-    text-align: center;
-  }
-  #nav.active { display: flex; }
-
-  #menu-icon {
-    display: block;
-    font-size: 2rem;
-    color: var(--accent);
-    cursor: pointer;
-  }
-}
-
-/* Large phones 421px–767px */
-@media (min-width: 421px) and (max-width: 767px) {
-  .home {
-    flex-direction: column;
-    gap: 3rem;
-    text-align: center;
-    padding: 6rem 2rem;
-  }
-
-  .home-content h1 { font-size: 3.8rem; }
-  .home-content h3 { font-size: 2.2rem; }
-  .home-img img { width: 160px; height: 160px; }
-
-  .moon-wrapper { display: none; }
-
-  #nav {
-    display: none;
-    flex-direction: column;
-    background: var(--bg-color);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 1rem 0;
-    text-align: center;
-  }
-  #nav.active { display: flex; }
-
-  #menu-icon {
-    display: block;
-    font-size: 2.2rem;
-    color: var(--accent);
-    cursor: pointer;
-  }
-}
-
-/* Tablets 768px–990px */
-@media (min-width: 768px) and (max-width: 990px) {
-  .home {
-    flex-direction: column;
-    gap: 3rem;
-    text-align: center;
-    padding: 8rem 3rem;
-  }
-
-  .home-content h1 { font-size: 4.5rem; }
-  .home-content h3 { font-size: 2.5rem; }
-  .home-img img { width: 200px; height: 200px; }
-
-  .moon-wrapper { display: none; }
-
-  #nav {
-    display: none;
-    flex-direction: column;
-    background: var(--bg-color);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 1rem 0;
-    text-align: center;
-  }
-  #nav.active { display: flex; }
-
-  #menu-icon {
-    display: block;
-    font-size: 2.4rem;
-    color: var(--accent);
-    cursor: pointer;
-  }
-}
-
 /* Desktop (default) */
 @media (min-width: 991px) {
   #menu-icon { display: none; }
@@ -407,4 +299,5 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
   display: block !important;
   opacity: 0.55 !important;
 }
+
 
