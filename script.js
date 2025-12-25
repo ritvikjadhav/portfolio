@@ -1,49 +1,52 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const typingElement = document.getElementById("typing");
-  const words = ["Web Developer", "Software Engineer", "Frontend Specialist"];
+// ===============================
+// Typing Effect
+// ===============================
+const typingElement = document.getElementById("typing");
+const words = ["Web Developer", "Software Engineer", "Frontend Specialist"];
 
-  let wordIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
 
-  function typeEffect() {
-    const currentWord = words[wordIndex];
+function typeEffect() {
+  const currentWord = words[wordIndex];
 
-    if (isDeleting) {
-      typingElement.textContent = currentWord.substring(0, charIndex--);
-      if (charIndex < 0) {
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        charIndex = 0;
-        setTimeout(typeEffect, 300);
-        return;
-      }
-    } else {
-      typingElement.textContent = currentWord.substring(0, charIndex++);
-      if (charIndex >= currentWord.length) {
-        isDeleting = true;
-        setTimeout(typeEffect, 1000);
-        return;
-      }
+  if (isDeleting) {
+    typingElement.textContent = currentWord.substring(0, charIndex--);
+    if (charIndex < 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      charIndex = 0;
+      setTimeout(typeEffect, 300);
+      return;
     }
-
-    const speed = isDeleting ? 100 : 150;
-    setTimeout(typeEffect, speed);
+  } else {
+    typingElement.textContent = currentWord.substring(0, charIndex++);
+    if (charIndex >= currentWord.length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 1000);
+      return;
+    }
   }
 
-  typeEffect();
-});
+  const speed = isDeleting ? 100 : 150;
+  setTimeout(typeEffect, speed);
+}
+
+// Initialize typing effect
+typeEffect();
 
 
+// ===============================
+// Mobile Menu Toggle
+// ===============================
+const menuIcon = document.getElementById("menu-icon");
+const nav = document.getElementById("nav");
 
 function initMenuToggle() {
-  const menuIcon = document.getElementById("menu-icon");
-  const nav = document.getElementById("nav");
-
   if (menuIcon && nav) {
     menuIcon.addEventListener("click", () => {
-      const isActive = nav.classList.toggle("active");
-      menuIcon.setAttribute("aria-expanded", isActive);
+      nav.classList.toggle("active");
     });
   }
 }
@@ -71,10 +74,13 @@ function initScrollReveal() {
 }
 initScrollReveal();
 
-function initActiveNavHighlight() {
-  const navLinks = document.querySelectorAll("nav a");
-  const sections = document.querySelectorAll("section");
 
+// ===============================
+// Active Nav Highlight
+// ===============================
+const navLinks = document.querySelectorAll("nav a");
+
+function initActiveNavHighlight() {
   window.addEventListener("scroll", () => {
     let current = "";
 
@@ -92,20 +98,23 @@ function initActiveNavHighlight() {
 
     navLinks.forEach(link => {
       link.classList.remove("active");
-      link.removeAttribute("aria-current");
       if (link.getAttribute("href") === "#" + current) {
         link.classList.add("active");
-        link.setAttribute("aria-current", "page");
       }
     });
   });
 }
 initActiveNavHighlight();
 
+
+// ===============================
+// Device Detection (Desktop Mode Fix)
+// ===============================
 document.addEventListener("DOMContentLoaded", () => {
   const html = document.documentElement;
 
   function checkDesktopMode() {
+    // Chrome "Desktop site" usually reports width >= 980px
     if (window.innerWidth >= 980) {
       html.classList.add("desktop");
       html.classList.remove("mobile");
@@ -117,9 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Run on load and whenever viewport changes
   checkDesktopMode();
   window.addEventListener("resize", checkDesktopMode);
-  window.addEventListener("orientationchange", checkDesktopMode);
 });
-
-
