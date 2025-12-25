@@ -383,3 +383,28 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
     transform: scale(1) translateY(-50%);
   }
 }
+/* ===============================
+   Forced Desktop Layout
+================================ */
+.desktop .home {
+  flex-direction: row !important;
+  text-align: left !important;
+}
+
+.desktop #nav {
+  display: flex !important;
+  flex-direction: row !important;
+  position: static !important;
+  width: auto !important;
+  background: none !important;
+}
+
+.desktop #menu-icon {
+  display: none !important;
+}
+
+.desktop .moon-wrapper {
+  display: block !important;
+  opacity: 0.55 !important;
+}
+
