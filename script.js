@@ -111,19 +111,22 @@ initActiveNavHighlight();
 // Device Detection (Desktop Mode Fix)
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
-  const ua = navigator.userAgent;
   const html = document.documentElement;
 
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(ua);
-  const isDesktopUA = !isMobile || ua.includes("X11") || ua.includes("Windows") || ua.includes("Macintosh");
-
-  if (isDesktopUA) {
-    html.classList.add("desktop");
-    html.classList.remove("mobile");
-    console.log("Desktop layout forced");
-  } else {
-    html.classList.add("mobile");
-    html.classList.remove("desktop");
-    console.log("Mobile layout active");
+  function checkDesktopMode() {
+    // Chrome "Desktop site" usually reports width >= 980px
+    if (window.innerWidth >= 980) {
+      html.classList.add("desktop");
+      html.classList.remove("mobile");
+      console.log("Desktop layout forced");
+    } else {
+      html.classList.add("mobile");
+      html.classList.remove("desktop");
+      console.log("Mobile layout active");
+    }
   }
+
+  // Run on load and whenever viewport changes
+  checkDesktopMode();
+  window.addEventListener("resize", checkDesktopMode);
 });
