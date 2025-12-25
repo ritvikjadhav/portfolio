@@ -108,18 +108,22 @@ initActiveNavHighlight();
 
 
 // ===============================
-// Device Detection (Fixed)
+// Device Detection (Desktop Mode Fix)
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
-  const ua = navigator.userAgent.toLowerCase();
-  const isMobileDevice = /android|iphone|ipad|ipod/.test(ua);
+  const ua = navigator.userAgent;
+  const html = document.documentElement;
 
-  // ❌ Removed force-desktop logic
-  // ✅ Let CSS media queries handle layout naturally
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(ua);
+  const isDesktopUA = !isMobile || ua.includes("X11") || ua.includes("Windows") || ua.includes("Macintosh");
 
-  if (isMobileDevice) {
-    console.log("Mobile device detected, using mobile layout");
+  if (isDesktopUA) {
+    html.classList.add("desktop");
+    html.classList.remove("mobile");
+    console.log("Desktop layout forced");
   } else {
-    console.log("Desktop browser detected, using desktop layout");
+    html.classList.add("mobile");
+    html.classList.remove("desktop");
+    console.log("Mobile layout active");
   }
 });
