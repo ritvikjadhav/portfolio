@@ -1,40 +1,39 @@
-// ===============================
-// Typing Effect
-// ===============================
-const typingElement = document.getElementById("typing");
-const words = ["Web Developer", "Software Engineer", "Frontend Specialist"];
+document.addEventListener("DOMContentLoaded", () => {
+  const typingElement = document.getElementById("typing");
+  const words = ["Web Developer", "Software Engineer", "Frontend Specialist"];
 
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-function typeEffect() {
-  const currentWord = words[wordIndex];
+  function typeEffect() {
+    const currentWord = words[wordIndex];
 
-  if (isDeleting) {
-    typingElement.textContent = currentWord.substring(0, charIndex--);
-    if (charIndex < 0) {
-      isDeleting = false;
-      wordIndex = (wordIndex + 1) % words.length;
-      charIndex = 0;
-      setTimeout(typeEffect, 300);
-      return;
+    if (isDeleting) {
+      typingElement.textContent = currentWord.substring(0, charIndex--);
+      if (charIndex < 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        charIndex = 0;
+        setTimeout(typeEffect, 300);
+        return;
+      }
+    } else {
+      typingElement.textContent = currentWord.substring(0, charIndex++);
+      if (charIndex >= currentWord.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1000);
+        return;
+      }
     }
-  } else {
-    typingElement.textContent = currentWord.substring(0, charIndex++);
-    if (charIndex >= currentWord.length) {
-      isDeleting = true;
-      setTimeout(typeEffect, 1000);
-      return;
-    }
+
+    const speed = isDeleting ? 100 : 150;
+    setTimeout(typeEffect, speed);
   }
 
-  const speed = isDeleting ? 100 : 150;
-  setTimeout(typeEffect, speed);
-}
+  typeEffect();
+});
 
-// Initialize typing effect
-typeEffect();
 
 
 // ===============================
@@ -130,3 +129,4 @@ document.addEventListener("DOMContentLoaded", () => {
   checkDesktopMode();
   window.addEventListener("resize", checkDesktopMode);
 });
+
