@@ -53,20 +53,6 @@ function initMenuToggle() {
 initMenuToggle();
 
 // ===============================
-// Close Mobile Menu on Link Click
-// ===============================
-function initCloseMenuOnLinkClick() {
-  const navLinks = nav.querySelectorAll("a");
-  navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("active");
-    });
-  });
-}
-initCloseMenuOnLinkClick();
-
-
-// ===============================
 // Scroll Reveal
 // ===============================
 const sections = document.querySelectorAll("section");
@@ -143,4 +129,5 @@ document.addEventListener("DOMContentLoaded", () => {
   checkDesktopMode();
   window.addEventListener("resize", checkDesktopMode);
 });
+
 
