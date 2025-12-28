@@ -22,35 +22,15 @@
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 100px; /* header offset */
 }
 
 body {
   width: 100%;
   min-height: 100vh;
-  background: url("starry.png") no-repeat center center fixed;
-  background-size: cover;
+  background: #0f0f1a; /* neutral base */
   color: var(--text-color);
   overflow-x: hidden;
-}
-/* About Section */
-#about {
-  background: #ffffff;
-  color: #333;
-  padding: 8rem 9% 5rem;
-  box-shadow: 0 -4px 10px rgba(0,0,0,0.15);
-  border-radius: 0 0 20px 20px; /* optional rounded bottom */
-}
-
-#about h2 {
-  color: var(--secondary);
-  font-weight: 600;
-  margin-bottom: 2rem;
-}
-
-#about p {
-  font-size: 1.6rem;
-  line-height: 1.8;
 }
 
 /* Header */
@@ -65,7 +45,7 @@ header {
   align-items: center;
   z-index: 100;
   animation: slideDown 1s ease;
-  box-shadow: 0 2px 10px rgba(20, 23, 71, 0.774);
+  box-shadow: 0 2px 10px rgba(20, 23, 71, 0.35);
 }
 
 @keyframes slideDown {
@@ -114,6 +94,9 @@ nav a.active::after { width: 100%; }
   gap: 6rem;
   animation: fadeIn 1.5s ease;
   z-index: 1;
+  background: url("starry.png") no-repeat center center fixed;
+  background-size: cover;
+  padding: 12rem 9% 10rem; /* add bottom padding so wave sits nicely */
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(40px); }
@@ -140,36 +123,37 @@ nav a.active::after { width: 100%; }
   color: var(--accent);
 }
 
+/* Wave Divider */
 .wave-divider {
   position: relative;
   width: 100%;
   height: 120px;
   overflow: hidden;
   line-height: 0;
+  margin-top: -1px; /* removes seam between hero and wave */
 }
-
 .wave-divider svg {
-  position: relative;
   display: block;
-  width: calc(100% + 1.3px);
+  width: 100%;
   height: 120px;
 }
-
 .wave-divider path {
-  filter: drop-shadow(0 -4px 6px rgba(0,0,0,0.25));
+  filter: drop-shadow(0 -2px 8px rgba(0,0,0,0.25));
 }
+
+/* White Background Wrapper */
 .white-bg {
   background: #ffffff;
   color: #333;
-  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 -6px 16px rgba(0,0,0,0.12);
 }
 .white-bg h2 {
   color: var(--secondary);
 }
 
-
+/* Moon */
 .moon-wrapper {
-  position: fixed;
+  position: absolute; /* inside hero to avoid seams across wave */
   top: 50%;
   left: -17%;
   transform: translateY(-50%);
@@ -251,10 +235,10 @@ nav a.active::after { width: 100%; }
   transform: scale(1.05);
 }
 
-/* Section Reveal */
+/* Section Reveal + Spacing */
 section {
-  min-height: 100vh;
-  padding: 12rem 9% 5rem;
+  min-height: auto;
+  padding: 8rem 9% 5rem;
   opacity: 0;
   transform: translateY(40px);
   transition: all 1s ease;
@@ -262,6 +246,22 @@ section {
 section.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* About Section — inherits white wrapper */
+#about {
+  background: transparent; /* white comes from .white-bg */
+  color: inherit;
+  box-shadow: none;
+  border-radius: 0;
+}
+#about h2 {
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+#about p {
+  font-size: 1.6rem;
+  line-height: 1.8;
 }
 
 /* Projects */
@@ -304,15 +304,17 @@ h1 { font-size: clamp(2.4rem, 6vw, 5.5rem); }
 h2 { font-size: clamp(1.8rem, 4.5vw, 3rem); }
 p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
 
-/* Hide hamburger by default (desktop) */
+/* Hamburger default (desktop hidden) */
 #menu-icon { display: none; }
+
 /* Phones ≤420px */
 @media (max-width: 420px) {
   .home {
     flex-direction: column;
     gap: 2rem;
     text-align: center;
-    padding: 5rem 1.5rem;
+    padding: 8rem 1.5rem 6rem;
+    background-attachment: scroll; /* performance on mobile */
   }
 
   .home-content h1 { font-size: 3.2rem; }
@@ -340,6 +342,10 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
     color: var(--accent);
     cursor: pointer;
   }
+
+  section {
+    padding: 6rem 6% 4rem;
+  }
 }
 
 /* Large phones 421px–767px */
@@ -348,7 +354,8 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
     flex-direction: column;
     gap: 3rem;
     text-align: center;
-    padding: 6rem 2rem;
+    padding: 9rem 2rem 6rem;
+    background-attachment: scroll;
   }
 
   .home-content h1 { font-size: 3.8rem; }
@@ -376,6 +383,10 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
     color: var(--accent);
     cursor: pointer;
   }
+
+  section {
+    padding: 7rem 7% 4.5rem;
+  }
 }
 
 /* Tablets 768px–990px */
@@ -384,7 +395,8 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
     flex-direction: column;
     gap: 3rem;
     text-align: center;
-    padding: 8rem 3rem;
+    padding: 10rem 3rem 7rem;
+    background-attachment: scroll;
   }
 
   .home-content h1 { font-size: 4.5rem; }
@@ -412,8 +424,13 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
     color: var(--accent);
     cursor: pointer;
   }
+
+  section {
+    padding: 7.5rem 7% 5rem;
+  }
 }
-/* Desktop (default) */
+
+/* Desktop (≥980px) */
 @media (min-width: 980px) {
   #menu-icon { display: none; }
   #nav {
@@ -427,15 +444,16 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
     opacity: 0.55;
     visibility: visible;
     transform: scale(1) translateY(-50%);
+    display: block;
   }
 }
+
 /* Force desktop layout when .desktop is present */
 .desktop .home {
   flex-direction: row !important;
   text-align: left !important;
-  padding: 12rem 9% 5rem !important;
+  padding: 12rem 9% 10rem !important;
 }
-
 .desktop #nav {
   display: flex !important;
   flex-direction: row !important;
@@ -443,14 +461,17 @@ p  { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.6; }
   width: auto !important;
   background: none !important;
 }
-
 .desktop #menu-icon {
   display: none !important;
 }
-
 .desktop .moon-wrapper {
   display: block !important;
   opacity: 0.55 !important;
   visibility: visible !important;
   transform: scale(1) translateY(-50%) !important;
+}
+
+/* Optional: flipped wave for footer or transition back to dark */
+.wave-divider.flip svg {
+  transform: rotate(180deg);
 }
